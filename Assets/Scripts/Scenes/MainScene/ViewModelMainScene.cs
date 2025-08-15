@@ -17,7 +17,8 @@ namespace TybaStr.MVVM.MainScene
         }
         public void LoadPlayScene()
         {
-            SceneManager.LoadScene(_model.PlayScene.name);
+            SceneManager.LoadScene(1);
+            Debug.LogWarning("TODO: Refactor How Load Scene");
         }
     }
 }
