@@ -1,4 +1,5 @@
 using R3;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 
 namespace TybaStr
 {
-
+    [Serializable]
     public class UserProfile
     {
         [SerializeField] private ReactiveProperty<string> _name;
