@@ -20,11 +20,20 @@ namespace TybaStr.SaveLoad
 
             callback?.Invoke(true);
         }
-        public void Load<T>(string key, Action<T> callback)
+        public void TryLoad(string key,Action<bool> callback)
         {
             string path = BuildPath(key);
-
-            using (var fileStream = new StreamReader(path))
+            if (File.Exists(path))
+            {
+                callback?.Invoke(true);
+                return;
+            }
+            callback?.Invoke(false);
+        }
+        public void Load<T>(string key, Action<T> callback) 
+        {
+            string path = BuildPath(key);
+            using (StreamReader fileStream = new StreamReader(path))
             {
                 string json = fileStream.ReadToEnd();
                 T data = JsonConvert.DeserializeObject<T>(json);
