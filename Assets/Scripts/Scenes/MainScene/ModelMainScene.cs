@@ -8,11 +8,8 @@ namespace TybaStr.MVVM.MainScene
     [Serializable]
     public class ModelMainScene
     {
-        [SerializeField]private UserProfile _profile;
-        public UserProfile Profile => _profile;
-        public ModelMainScene()
-        {
-            _profile = new UserProfile();
-        }
+        [SerializeField]private UserProfile _profile = new();
+        public UserProfile Profile { get { return _profile; }set { _profile = value; } }
+        
     }
 }
