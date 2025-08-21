@@ -1,10 +1,13 @@
 using UnityEngine;
 
-public class ViewModelGameScene 
+namespace TybaStr.MVVM.GameScene
 {
-    private ModelGameScene _model;
-    public void Init(ModelGameScene model)
+    public class ViewModelGameScene
     {
-        _model = model;
+        private ModelGameScene _model;
+        public void Init(ModelGameScene model)
+        {
+            _model = model;
+        }
     }
 }

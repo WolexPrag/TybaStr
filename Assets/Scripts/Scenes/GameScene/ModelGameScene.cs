@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using TybaStr;
 using UnityEngine;
 
-public class ModelGameScene 
+namespace TybaStr.MVVM.GameScene
 {
-    private UserProfile _userProfile;
-    public UserProfile UserProfile => _userProfile;
-    public ModelGameScene(UserProfile userProfile)
+    public class ModelGameScene
     {
-        _userProfile = userProfile;
+        private UserProfile _userProfile;
+        public UserProfile UserProfile => _userProfile;
+        public ModelGameScene(UserProfile userProfile)
+        {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+            _userProfile = userProfile;
+        }
     }
 }

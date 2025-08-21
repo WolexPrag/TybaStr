@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ViewGameScene : MonoBehaviour
+namespace TybaStr.MVVM.GameScene
 {
-    private ViewModelGameScene _viewModel;
-    public void Init(ViewModelGameScene viewModel)
+    public class ViewGameScene : MonoBehaviour
     {
-        _viewModel = viewModel;
+        private ViewModelGameScene _viewModel;
+        public void Init(ViewModelGameScene viewModel)
+        {
+            _viewModel = viewModel;
+        }
     }
 }
