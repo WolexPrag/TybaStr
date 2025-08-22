@@ -7,24 +7,21 @@ namespace TybaStr.MVVM.MainScene
     public class ViewMainSceneSettings : MonoBehaviour,IView
     {
         [SerializeField] private ViewModelMainScene _viewModel;
-        [SerializeField] private Button _toMainButton;
         [SerializeField] private TMP_InputField _inputField;
+        [SerializeField] private Button _toMainButton;
+
         public void Init(ViewModelMainScene viewModel)
         {
             _viewModel = viewModel;
-            _viewModel.OnUpdateUserName.Subscribe(_=>_inputField.text = _);
-            _toMainButton.onClick.AddListener(OnMain);
-            _inputField.onEndEdit.AddListener(OnUserNameChange);
+            _viewModel.OnChangeUserName.Subscribe(SetTextInputField);
+            _inputField.onEndEdit.AddListener(v =>_viewModel.Name = v);
+            _toMainButton.onClick.AddListener(_viewModel.OnMain);
         }
-        public void OnMain()
+        
+        private void SetTextInputField(string value)
         {
-            _viewModel.OnMain();
+            _inputField.text = value;
         }
-        public void OnUserNameChange(string value)
-        {
-            _viewModel.OnUserNameChange(value);
-        }
-
         public void Show()
         {
             gameObject.SetActive(true);

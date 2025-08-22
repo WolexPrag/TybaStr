@@ -10,47 +10,50 @@ namespace TybaStr.MVVM.MainScene
     public class ViewModelMainScene
     {
         [SerializeField] private ModelMainScene _model;
-        private ISaveLoadService _saveLoadService;
+        public Observable<string> OnChangeUserName => _model.Profile.OnChangeName;
+        public string Name {get{ return _model.Profile.Name; } set { _model.Profile.Name = value; _saveLoadService.Save(_key,_model.Profile.Name); } }
+
         private IView _viewSettings;
         private IView _viewMain;
-        private string _key = "Profile";
 
-        public Observable<string> OnUpdateUserName => _model.Profile.OnChangeName;
+        private ISaveLoadService _saveLoadService;
+        private string _key => "Profile";
 
-        public void Init(ModelMainScene model,ViewMainScene viewMain,ViewMainSceneSettings viewSettings,ISaveLoadService saveLoadService)
+
+        public ViewModelMainScene(ISaveLoadService saveLoadService)
         {
-            _model = model;
-            _viewMain = viewMain;
-            _viewSettings = viewSettings;
             _saveLoadService = saveLoadService;
         }
-        public void LoadPlayScene()
+        public void Init(ModelMainScene model,IView viewMain,IView viewSettings)
+        {
+            _model = model;
+            _saveLoadService.TryLoad(_key, _ => {
+                if (!_)
+                {
+                    _model.Profile = new UserProfile();
+                    return;
+                }
+                _saveLoadService.Load<string>(_key, v =>
+                {
+                    _model.Profile.Name = v;
+                });
+            });
+            _viewMain = viewMain;
+            _viewSettings = viewSettings;
+        }
+        public void OnPlay()
         {
             SceneManager.LoadScene(1);
-            Debug.LogWarning("TODO: Refactor How Load Scene");
         }
         public void OnMain()
         {
-            _saveLoadService.Save("Profile",_model.Profile);
-
             _viewMain.Show();
             _viewSettings.Hide();
         }
-        public void OnSetting()
+        public void OnSettings()
         {
-            _saveLoadService.TryLoad(_key, isExist => {
-                if (isExist)
-                {
-                    _saveLoadService.Load<UserProfile>(_key, _ => _model.Profile = _);
-                }
-            });
-            
             _viewMain.Hide();
             _viewSettings.Show();
-        }
-        public void OnUserNameChange(string value)
-        {
-            _model.Profile.Name = value;
         }
 
     }

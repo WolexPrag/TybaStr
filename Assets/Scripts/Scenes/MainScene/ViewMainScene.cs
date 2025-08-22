@@ -10,21 +10,14 @@ namespace TybaStr.MVVM.MainScene
     {
         [SerializeField] private ViewModelMainScene _viewModel;
 
-        [SerializeField] private Button _playButton;
         [SerializeField] private Button _settingButton;
+        [SerializeField] private Button _playButton;
+
         public void Init(ViewModelMainScene viewModel)
         {
-            _viewModel = viewModel; 
-            _playButton.onClick.AddListener(OnPlay);
-            _settingButton.onClick.AddListener(OnSetting);
-        }
-        private void OnPlay()
-        {
-            _viewModel.LoadPlayScene();
-        }
-        private void OnSetting()
-        {
-            _viewModel.OnSetting();
+            _viewModel = viewModel;
+            _settingButton.onClick.AddListener(_viewModel.OnSettings);
+            _playButton.onClick.AddListener(_viewModel.OnPlay);
         }
         public void Show()
         {
