@@ -7,11 +7,7 @@ namespace TybaStr.MVVM.GameScene
 {
     public class ModelGameScene
     {
-        private UserProfile _userProfile;
-        public UserProfile UserProfile => _userProfile;
-        public ModelGameScene(UserProfile userProfile)
-        {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-            _userProfile = userProfile;
-        }
+        [SerializeField] private UserProfile _profile = new();
+        public UserProfile Profile { get { return _profile; } set { _profile = value; } }
     }
 }
