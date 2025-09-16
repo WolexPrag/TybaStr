@@ -7,26 +7,34 @@ public class UnitFactory : Building
 {
     #region Struct UnitProduce
     [Serializable]
-    public struct UnitProduceRequestInfo
+    public struct Request
     {
-        [SerializeField] private float Price;
-        [SerializeField] private Unit unit;
+        //TODO: private Factory factory; witch have self method create unit
+        [SerializeField] private float _price;
+        [SerializeField] private float _timeConstruct;
+        [SerializeField] private Unit _unit;
+
+        public float Price => _price;
+        public float TimeConstruct => _timeConstruct;
+        public Unit Unit => _unit;
     }
     [Serializable]
-    private struct UnitProduceInfo
+    private class Produce
     {
-        public UnitProduceInfo(UnitProduceRequestInfo requestInfo)
+        public Produce(Request request)
         {
-            this.requestInfo = requestInfo;
+            this.requestInfo = request;
+            timeConstructed = 0f;
         }
-        [SerializeField] public UnitProduceRequestInfo requestInfo;
+        [SerializeField] public float timeConstructed;
+        [SerializeField] public Request requestInfo;
     }
     #endregion
 
     public event Action<Unit> OnRelease;
-    [SerializeField] private List<UnitProduceRequestInfo> _produceOptions;
-    public IReadOnlyList<UnitProduceRequestInfo> ProduceOptions => _produceOptions;
-    [SerializeField] private List<UnitProduceInfo> _produceInfo;
+    [SerializeField] private List<Request> _produceOptions;
+    public IReadOnlyList<Request> ProduceOptions => _produceOptions;
+    [SerializeField] private List<Produce> _produceInfo;
 
 
     public void SendRequest(UnitProduceRequestInfo produceInfo)
