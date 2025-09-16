@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,6 +34,7 @@ public class UnitFactory : Building
     [SerializeField] private List<Request> _produceOptions;
     public IReadOnlyList<Request> ProduceOptions => _produceOptions;
     [SerializeField] private List<Produce> _produceInfo;
+    [SerializeField] private Transform posExit;
 
     #region TEST
 #if UNITY_EDITOR
@@ -57,8 +57,37 @@ public class UnitFactory : Building
     {
         _produceInfo.Add(new Produce(_produceOptions[id]));
     }
+    private void Producing()
     {
-        _produceInfo.Add(new UnitProduceInfo());
+        Produce produceInfo =  _produceInfo[0];
+        if (_produceInfo[0].timeConstructed>produceInfo.requestInfo.TimeConstruct)
+        {
+            ExitUnit(0);
+            return;
+        }
+        produceInfo.timeConstructed += Time.deltaTime;
+    }
+    private bool TryProduce()
+    {
+        if (_produceInfo.Count < 1)
+        {
+            return false;
+        }
+        return true;
+    }
+    private void ExitUnit(int id)
+    {
+        Unit unit = Instantiate(_produceInfo[id].requestInfo.Unit);
+        unit.transform.position = posExit.position;
+        _produceInfo.RemoveAt(id);
+        OnRelease?.Invoke(unit);
+    }
+    private void Update()
+    {
+        if (TryProduce())
+        {
+            Producing();
+        }
     }
 }
 
