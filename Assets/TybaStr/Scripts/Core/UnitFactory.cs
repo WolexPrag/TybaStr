@@ -36,8 +36,27 @@ public class UnitFactory : Building
     public IReadOnlyList<Request> ProduceOptions => _produceOptions;
     [SerializeField] private List<Produce> _produceInfo;
 
+    #region TEST
+#if UNITY_EDITOR
+    [Serializable]
+    private struct TEST_DATA
+    {
+        public int IdOptions;
+    }
+    [SerializeField] TEST_DATA TEST_DATA_BIND1;
 
-    public void SendRequest(UnitProduceRequestInfo produceInfo)
+    [ContextMenu("Call SendRequest")]
+    private void TEST_SendRequest()
+    {
+        SendRequest(TEST_DATA_BIND1.IdOptions);
+    }
+#endif
+    #endregion
+
+    public void SendRequest(int id)
+    {
+        _produceInfo.Add(new Produce(_produceOptions[id]));
+    }
     {
         _produceInfo.Add(new UnitProduceInfo());
     }
