@@ -1,5 +1,4 @@
 using TybaStr.SaveLoad;
-using UnityEngine;
 
 namespace TybaStr.MVVM.GameScene
 {
@@ -9,7 +8,7 @@ namespace TybaStr.MVVM.GameScene
 
         private ISaveLoadService _saveLoadService;
         private string _key = "Profile";
-       
+
         public ViewModelGameScene(ISaveLoadService saveLoadService)
         {
             _saveLoadService = saveLoadService;
@@ -17,7 +16,8 @@ namespace TybaStr.MVVM.GameScene
         public void Init(ModelGameScene model)
         {
             _model = model;
-            _saveLoadService.TryLoad(_key, _ => {
+            _saveLoadService.TryLoad(_key, _ =>
+            {
                 if (_)
                 {
                     _saveLoadService.Load<string>(_key, v =>
@@ -25,7 +25,7 @@ namespace TybaStr.MVVM.GameScene
                         _model.Profile.Name = v;
                     });
                 }
-                
+
             });
         }
 

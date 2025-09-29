@@ -13,14 +13,14 @@ namespace TybaStr.SaveLoad
             string path = BuildPath(key);
             string json = JsonConvert.SerializeObject(data);
 
-            using(var fileStream = new StreamWriter(path))
+            using (var fileStream = new StreamWriter(path))
             {
                 fileStream.Write(json);
             }
 
             callback?.Invoke(true);
         }
-        public void TryLoad(string key,Action<bool> callback)
+        public void TryLoad(string key, Action<bool> callback)
         {
             string path = BuildPath(key);
             if (File.Exists(path))
@@ -30,7 +30,7 @@ namespace TybaStr.SaveLoad
             }
             callback?.Invoke(false);
         }
-        public void Load<T>(string key, Action<T> callback) 
+        public void Load<T>(string key, Action<T> callback)
         {
             string path = BuildPath(key);
             using (StreamReader fileStream = new StreamReader(path))

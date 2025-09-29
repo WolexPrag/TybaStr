@@ -1,8 +1,8 @@
+using R3;
 using System;
 using TybaStr.SaveLoad;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using R3;
 
 namespace TybaStr.MVVM.MainScene
 {
@@ -11,7 +11,7 @@ namespace TybaStr.MVVM.MainScene
     {
         [SerializeField] private ModelMainScene _model;
         public Observable<string> OnChangeUserName => _model.Profile.OnChangeName;
-        public string Name {get{ return _model.Profile.Name; } set { _model.Profile.Name = value; _saveLoadService.Save(_key,_model.Profile.Name); } }
+        public string Name { get { return _model.Profile.Name; } set { _model.Profile.Name = value; _saveLoadService.Save(_key, _model.Profile.Name); } }
 
         private IView _viewSettings;
         private IView _viewMain;
@@ -24,10 +24,11 @@ namespace TybaStr.MVVM.MainScene
         {
             _saveLoadService = saveLoadService;
         }
-        public void Init(ModelMainScene model,IView viewMain,IView viewSettings)
+        public void Init(ModelMainScene model, IView viewMain, IView viewSettings)
         {
             _model = model;
-            _saveLoadService.TryLoad(_key, _ => {
+            _saveLoadService.TryLoad(_key, _ =>
+            {
                 if (!_)
                 {
                     _model.Profile = new UserProfile();

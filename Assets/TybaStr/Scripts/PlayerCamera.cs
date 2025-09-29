@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
-using UnityEngine.InputSystem;
+﻿using R3;
 using UnityEngine;
-using R3;
+using UnityEngine.InputSystem;
 
 
 [RequireComponent(typeof(Camera))]
@@ -18,9 +16,9 @@ public class PlayerCamera : MonoBehaviour
     private bool isDrag;
     private Vector2 _startPressPoint;
     private Vector2 PointToWorld => Camera.ScreenToWorldPoint(_point.ReadValue<Vector2>());
-    
 
-    public void SetInput(InputAction press,InputAction point)
+
+    public void SetInput(InputAction press, InputAction point)
     {
         _press = press;
         _point = point;
@@ -35,7 +33,8 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update()
     {
-        if (isDrag) {
+        if (isDrag)
+        {
             OnDrag();
         }
     }
@@ -61,7 +60,7 @@ public class PlayerCamera : MonoBehaviour
     }
     private void Move(Vector2 input)
     {
-        transform.position += new Vector3(input.x,input.y,0);
+        transform.position += new Vector3(input.x, input.y, 0);
     }
 
     private void OnDisable()

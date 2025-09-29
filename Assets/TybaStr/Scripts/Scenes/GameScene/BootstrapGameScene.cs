@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using TybaStr.InputActions;
 using TybaStr.MVVM.GameScene;
 using TybaStr.SaveLoad;
-using TybaStr.InputActions;
+using UnityEngine;
 
 
-public class BootstrapGameScene :MonoBehaviour
+public class BootstrapGameScene : MonoBehaviour
 {
     [SerializeField] private GameInputActions _inputActions;
     [SerializeField] private PlayerCamera _playerCamera;
-    
+
 
     [SerializeField] private ViewGameScene _view;
     private ViewModelGameScene _viewModel;
@@ -33,6 +31,6 @@ public class BootstrapGameScene :MonoBehaviour
     private void Activate()
     {
         _inputActions.Enable();
-        _playerCamera.SetInput(_inputActions.Camera.Hold,_inputActions.Camera.Point);
+        _playerCamera.SetInput(_inputActions.Camera.Hold, _inputActions.Camera.Point);
     }
 }

@@ -1,15 +1,14 @@
 using R3;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.U2D;
 
-public class VirtualJoystick : MonoBehaviour,IDragHandler, IPointerDownHandler, IPointerUpHandler
+public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     private ReactiveProperty<Vector2> _value = new ReactiveProperty<Vector2>();
     public Observable<Vector2> OnValueChange => _value;
     public Vector2 Value => _value.Value;
 
-    [SerializeField] private RectTransform joystickBackground; 
+    [SerializeField] private RectTransform joystickBackground;
     [SerializeField] private RectTransform joystickHandle;
 
 

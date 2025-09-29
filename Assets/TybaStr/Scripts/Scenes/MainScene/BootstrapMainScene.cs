@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TybaStr.MVVM.MainScene;
 using TybaStr.SaveLoad;
 using UnityEngine;
@@ -16,7 +14,7 @@ public class BootstrapMainMenu : MonoBehaviour
     {
         _model = new ModelMainScene();
         _viewModel = new ViewModelMainScene(new JsonToFileSaveLoadService());
-        _viewModel.Init(_model,_view,_viewSettings);
+        _viewModel.Init(_model, _view, _viewSettings);
 
         _viewSettings.Init(_viewModel);
         _view.Init(_viewModel);

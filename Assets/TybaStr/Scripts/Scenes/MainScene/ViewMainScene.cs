@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace TybaStr.MVVM.MainScene
 {
-    public class ViewMainScene : MonoBehaviour,IView
+    public class ViewMainScene : MonoBehaviour, IView
     {
         [SerializeField] private ViewModelMainScene _viewModel;
 
