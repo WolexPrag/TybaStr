@@ -1,9 +1,23 @@
-﻿
+﻿using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
-public abstract class Unit : MonoBehaviour
+namespace TybaStr.Core
 {
-    [SerializeField] private Fraction _belong;
-    public float Health { get; set; }
-}
+    public class Unit : MonoBehaviour
+    {
+        [SerializeField] private UnitStats _stats;
+        public event Action OnUnitStatsChanged;
 
+public abstract class Unit : MonoBehaviour
+#if UNITY_EDITOR
+        private void OnValidate()
+{
+            OnUnitStatsChanged?.Invoke();
+}
+#endif
+
+
+    }
+
+}
