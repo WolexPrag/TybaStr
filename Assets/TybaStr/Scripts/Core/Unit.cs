@@ -9,7 +9,6 @@ namespace TybaStr.Core
         [SerializeField] private UnitStats _stats;
         public event Action OnUnitStatsChanged;
 
-public abstract class Unit : MonoBehaviour
 #if UNITY_EDITOR
         private void OnValidate()
 {
