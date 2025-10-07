@@ -893,12 +893,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2008926100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d133b3503cc4f845ad04876b45a0f04, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fc14724471cf964cb296225683e818f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Core::SwordUnitFactory
+  m_EditorClassIdentifier: Core::UnitFactory
   _produceOptions:
-  - Price: 200
-    unit: {fileID: 0}
+  - _price: 100
+    _timeConstruct: 5
+    _unit: {fileID: 3406957220862046641, guid: 6356d508e1cfa7245a32ec7801aeadf5, type: 3}
+  _produceInfo: []
+  posExit: {fileID: 2008926102}
+  TEST_DATA_BIND1:
+    IdOptions: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
