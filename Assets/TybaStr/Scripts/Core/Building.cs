@@ -1,7 +1,10 @@
 using UnityEngine;
 
-public abstract class Building : MonoBehaviour
+namespace TybaStr.Core
 {
-    private Fraction _belong;
-    public Fraction Belong;
+    public abstract class Building : MonoBehaviour
+    {
+        private Fraction _belong;
+        public Fraction Belong => _belong;
+    }
 }
