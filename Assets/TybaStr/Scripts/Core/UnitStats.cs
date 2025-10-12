@@ -6,11 +6,6 @@ namespace TybaStr.Core
     [Serializable]
     public class UnitStats
     {
-        [SerializeField] private Unit _unit;
-        public UnitStats(Unit unit)
-        {
-            _unit = unit;
-        }
         [SerializeField] private float _health;
         public float Health
         {
