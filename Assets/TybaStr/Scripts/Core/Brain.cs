@@ -1,10 +1,11 @@
 ﻿namespace TybaStr.Core
 {
+    [Serializable]
     public class Brain
     {
-        protected Fraction _fraction;
-        protected FractionTask? _task;
-        protected Unit _unit;
+        [SerializeField] private FractionTask _task;
+        [SerializeReference] protected Fraction _fraction;
+        [SerializeReference] protected Unit _unit;
         public Brain(Fraction fraction)
         {
             _fraction = fraction;
