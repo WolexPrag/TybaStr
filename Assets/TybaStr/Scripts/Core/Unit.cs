@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Threading.Tasks;
-using UnityEngine;
+ using UnityEngine;
 
 namespace TybaStr.Core
 {
@@ -8,32 +7,24 @@ namespace TybaStr.Core
     {
         [SerializeField] private UnitStats _stats;
         public event Action OnUnitStatsChanged;
-        [SerializeField] private Vector2 _to;
-        
-        public Vector2 FindDirection(Vector2 pos,Vector2 to)
+        public void Move(Vector2 direction,float deltaTime)
         {
-            return (to - pos).normalized;
-        }
-        public async Task MoveTo(Vector2 toLine)
-        {
-            _to = toLine;
-            Vector2 way = FindDirection(transform.position, _to);
-            while (true)
+            float speed = _stats.Speed * deltaTime;
+            if (direction.magnitude <= speed)
             {
-                Move(way);
-                await Task.Yield();
+                transform.Translate(direction);
             }
-
-        }
-        public void Move(Vector2 input)
-        {
-            transform.Translate(input * _stats.Speed * Time.deltaTime);
+            else
+            {
+                transform.Translate(direction.normalized * speed);
+            }
+            
         }
 #if UNITY_EDITOR
         private void OnValidate()
-{
+        {
             OnUnitStatsChanged?.Invoke();
-}
+        }
 #endif
 
 
