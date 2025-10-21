@@ -49,5 +49,5 @@ namespace TybaStr.Core
         }
         public Vector2 Position => _position;
     }
-    }
+    
 }
