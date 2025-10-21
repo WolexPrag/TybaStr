@@ -8,7 +8,6 @@ namespace TybaStr.Core
         Use,
         Move,
         Attack,
-        Follow,
         Defence,
     }
     [Serializable]
