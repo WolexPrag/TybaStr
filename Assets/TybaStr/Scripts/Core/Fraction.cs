@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace TybaStr.Core
 {
+    [Serializable]
     public class Fraction
     {
         [SerializeField] private List<Brain> _brains;
