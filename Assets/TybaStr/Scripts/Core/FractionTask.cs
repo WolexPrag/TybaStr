@@ -18,14 +18,19 @@ namespace TybaStr.Core
         public Brain Brain => _brain;
         [SerializeField] private TypeTask _type;
         public TypeTask Type => _type;
-        [SerializeField] private Transform _target;
-        public Transform Target => _target;
+        [SerializeField] private ITarget _target;
+        public ITarget Target => _target;
 
-        public FractionTask(Brain brain,TypeTask type,Transform target = null)
+        public FractionTask(Brain brain,TypeTask type, ITarget target = null)
         {
             _brain = brain;
             _type = type;
             _target = target;
         }
+    }
+    public interface ITarget
+    {
+        public Vector2 Position { get; }
+    }
     }
 }
