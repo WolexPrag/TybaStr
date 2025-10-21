@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace TybaStr.Core
@@ -14,6 +15,14 @@ namespace TybaStr.Core
         {
             _name = name;
             _brains = new List<Brain>();
+        }
+        public void AssignTask(Brain brain,FractionTask task)
+        {
+            if (!_brains.Contains(brain))
+            {
+                throw new Exception("Brain is not part of this fraction");
+            }
+            brain.AssignTask(task);
         }
         private Brain AddBrain(Brain brain)
         {
