@@ -32,6 +32,15 @@ namespace TybaStr.Core
     {
         public Vector2 Position { get; }
     }
+    public class MovableTarget : ITarget
+    {
+        private Transform _transform;
+        public MovableTarget(Transform transform)
+        {
+            _transform = transform;
+        }
+        public Vector2 Position => _transform.position;
+    }
     public class PointTarget : ITarget
     {
         private Vector2 _position;
