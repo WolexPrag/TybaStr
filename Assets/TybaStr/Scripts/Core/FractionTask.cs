@@ -32,5 +32,14 @@ namespace TybaStr.Core
     {
         public Vector2 Position { get; }
     }
+    public class PointTarget : ITarget
+    {
+        private Vector2 _position;
+        public PointTarget(Vector2 position)
+        {
+            _position = position;
+        }
+        public Vector2 Position => _position;
+    }
     }
 }
