@@ -9,6 +9,11 @@ namespace TybaStr.Core
         [SerializeField] private string _name;
         public string Name => _name;
         [SerializeField] private List<Brain> _brains;
+        public Fraction(string name)
+        {
+            _name = name;
+            _brains = new List<Brain>();
+        }
         private Brain AddBrain(Brain brain)
         {
             _brains.Add(brain);
