@@ -14,16 +14,16 @@ namespace TybaStr.Core
     [Serializable]
     public struct FractionTask
     {
-        [SerializeField] private Unit _unit;
-        public Unit Unit => _unit;
+        [SerializeReference] private Brain _brain;
+        public Brain Brain => _brain;
         [SerializeField] private TypeTask _type;
         public TypeTask Type => _type;
         [SerializeField] private Transform _target;
         public Transform Target => _target;
 
-        public FractionTask(Unit unit,TypeTask type,Transform target = null)
+        public FractionTask(Brain brain,TypeTask type,Transform target = null)
         {
-            _unit = unit;
+            _brain = brain;
             _type = type;
             _target = target;
         }
