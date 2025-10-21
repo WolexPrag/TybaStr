@@ -14,5 +14,8 @@
         {
             _unit = unit;
         }
+        private void DoTask(FractionTask task, float deltaTime)
+        {
+        }
     }
 }
