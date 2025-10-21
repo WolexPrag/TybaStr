@@ -6,6 +6,8 @@ namespace TybaStr.Core
     [Serializable]
     public class Fraction
     {
+        [SerializeField] private string _name;
+        public string Name => _name;
         [SerializeField] private List<Brain> _brains;
         private Brain AddBrain(Brain brain)
         {
