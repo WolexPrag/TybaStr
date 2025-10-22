@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace TybaStr.Core
 {
+    [Serializable]
     public abstract class Factory<T> : Building
     {
         #region Struct Request and Produce
