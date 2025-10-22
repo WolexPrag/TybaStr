@@ -26,14 +26,14 @@ namespace TybaStr.Core
         {
             public ProduceStatus(Request request)
             {
-                this._requestInfo = request;
+                _request = request;
                 _percentProgress = 0;
             }
             [SerializeField] private float _percentProgress;
             public float Progress => _percentProgress;
 
-            [SerializeField] private Request _requestInfo;
-            public Request RequestInfo => _requestInfo;
+            [SerializeField] private Request _request;
+            public Request Request => _request;
             public void AddProgress(float time)
             {
                 _percentProgress += _requestInfo.TimeConstruction / time;
