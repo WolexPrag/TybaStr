@@ -36,7 +36,7 @@ namespace TybaStr.Core
             public Request Request => _request;
             public void AddProgress(float time)
             {
-                _percentProgress += _requestInfo.TimeConstruction / time;
+                _percentProgress += time / _request.TimeConstruction ;
             }
         }
         #endregion
