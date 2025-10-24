@@ -7,6 +7,19 @@ namespace TybaStr.Core
     {
         [SerializeField] private UnitStats _stats;
         public event Action OnUnitStatsChanged;
+        [SerializeField] private Brain _brain;
+        public Brain Brain
+        {
+            get
+            {
+                return _brain;
+            }
+            set
+            {
+                _brain = value;
+                _brain.Bind(this);
+            }
+        }
         public void Move(Vector2 direction,float deltaTime)
         {
             float speed = _stats.Speed * deltaTime;
