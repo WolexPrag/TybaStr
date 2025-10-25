@@ -20,6 +20,13 @@ namespace TybaStr.Core
                 _brain.Bind(this);
             }
         }
+        private void FixedUpdate()
+        {
+            if (Brain != null)
+            {
+                Brain.Tick(Time.fixedDeltaTime);
+            }
+        }
         public void Move(Vector2 direction,float deltaTime)
         {
             float speed = _stats.Speed * deltaTime;
