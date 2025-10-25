@@ -45,6 +45,10 @@ namespace TybaStr.Core
         [SerializeField] private List<Request> _produceOptions;
         public IReadOnlyList<Request> ProduceOptions => _produceOptions.AsReadOnly();
         [SerializeField] private Queue<ProduceStatus> _produceQueue = new();
+        protected bool TryPeekProduce(out ProduceStatus result)
+        {
+            return _produceQueue.TryDequeue(out result);
+        }
         public virtual void SendRequest(int id)
         {
             _produceQueue.Enqueue(new ProduceStatus(_produceOptions[id]));
