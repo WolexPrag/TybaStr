@@ -44,7 +44,7 @@ namespace TybaStr.Core
         public event Action<T> OnRelease;
         [SerializeField] private List<Request> _produceOptions;
         public IReadOnlyList<Request> ProduceOptions => _produceOptions.AsReadOnly();
-        [SerializeField] private Queue<ProduceStatus> _produceQueue;
+        [SerializeField] private Queue<ProduceStatus> _produceQueue = new();
 
         #region TEST
 #if UNITY_EDITOR
