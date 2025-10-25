@@ -45,23 +45,6 @@ namespace TybaStr.Core
         [SerializeField] private List<Request> _produceOptions;
         public IReadOnlyList<Request> ProduceOptions => _produceOptions.AsReadOnly();
         [SerializeField] private Queue<ProduceStatus> _produceQueue = new();
-
-        #region TEST
-#if UNITY_EDITOR
-        [Serializable]
-        private struct TEST_DATA
-        {
-            public int IdOptions;
-        }
-        [SerializeField] TEST_DATA TEST_DATA_BIND1;
-
-        [ContextMenu("Call SendRequest")]
-        private void TEST_SendRequest()
-        {
-            SendRequest(TEST_DATA_BIND1.IdOptions);
-        }
-#endif
-        #endregion
         public virtual void SendRequest(int id)
         {
             _produceQueue.Enqueue(new ProduceStatus(_produceOptions[id]));
