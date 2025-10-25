@@ -8,6 +8,7 @@ namespace TybaStr.Core
         [SerializeField] private UnitStats _stats;
         public event Action OnUnitStatsChanged;
         [SerializeField] private Brain _brain;
+        public Vector2 Position => transform.position;
         public Brain Brain
         {
             get
