@@ -3,22 +3,17 @@ using UnityEngine;
 
 public class UnitFactory : Factory<Unit>
 {
-    [SerializeField] protected ProduceStatus currentProducing;
-    [SerializeField] protected Vector3 _spawnPoint;
+    [SerializeReference] protected ProduceStatus currentProducing;
+    [SerializeField] protected Transform _spawnPoint;
     private void FixedUpdate()
     {
-        Produce(Time.fixedDeltaTime,currentProducing);
+        Produce(Time.fixedDeltaTime, ref currentProducing);
     }
-    private void Produce(float timeStep,ProduceStatus producing)
+    private void Produce(float timeStep,ref ProduceStatus producing)
     {
-        if (producing == null)   
-        {
-            if (_produceQueue.Count<1)
-            {
+        if (producing == null)
+            if (!TryPeekProduce(out producing))
                 return;
-            }
-            producing = _produceQueue.Peek();
-        }
         producing.AddProgress(timeStep);
 
         if (producing.Progress >= 1)
@@ -29,8 +24,9 @@ public class UnitFactory : Factory<Unit>
     }
     private void Release(ProduceStatus producing)
     {
-        Unit product = Instantiate(producing.RequestInfo.Product);
-        product.transform.position = _spawnPoint;
+        Unit product = Instantiate(producing.Request.Product);
+        product.transform.position =  _spawnPoint.position;
+        product.Brain = Belong.GetBrain(product);
         NotifyRelease(product);
     }
 

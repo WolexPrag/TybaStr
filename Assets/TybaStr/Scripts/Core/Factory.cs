@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace TybaStr.Core
 {
+    [Serializable]
     public abstract class Factory<T> : Building
     {
         #region Struct Request and Produce
@@ -25,17 +26,17 @@ namespace TybaStr.Core
         {
             public ProduceStatus(Request request)
             {
-                this._requestInfo = request;
+                _request = request;
                 _percentProgress = 0;
             }
             [SerializeField] private float _percentProgress;
             public float Progress => _percentProgress;
 
-            [SerializeField] private Request _requestInfo;
-            public Request RequestInfo => _requestInfo;
+            [SerializeField] private Request _request;
+            public Request Request => _request;
             public void AddProgress(float time)
             {
-                _percentProgress += _requestInfo.TimeConstruction / time;
+                _percentProgress += time / _request.TimeConstruction ;
             }
         }
         #endregion
@@ -43,24 +44,11 @@ namespace TybaStr.Core
         public event Action<T> OnRelease;
         [SerializeField] private List<Request> _produceOptions;
         public IReadOnlyList<Request> ProduceOptions => _produceOptions.AsReadOnly();
-        [SerializeField] protected Queue<ProduceStatus> _produceQueue;
-
-        #region TEST
-#if UNITY_EDITOR
-        [Serializable]
-        private struct TEST_DATA
+        [SerializeField] private Queue<ProduceStatus> _produceQueue = new();
+        protected bool TryPeekProduce(out ProduceStatus result)
         {
-            public int IdOptions;
+            return _produceQueue.TryDequeue(out result);
         }
-        [SerializeField] TEST_DATA TEST_DATA_BIND1;
-
-        [ContextMenu("Call SendRequest")]
-        private void TEST_SendRequest()
-        {
-            SendRequest(TEST_DATA_BIND1.IdOptions);
-        }
-#endif
-        #endregion
         public virtual void SendRequest(int id)
         {
             _produceQueue.Enqueue(new ProduceStatus(_produceOptions[id]));
