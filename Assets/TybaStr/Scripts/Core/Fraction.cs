@@ -1,10 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class Fraction
+namespace TybaStr.Core
 {
+    public class Fraction
+    {
+        [SerializeField] private List<Brain> _brains;
+        private Brain AddBrain(Brain brain)
+        {
+            _brains.Add(brain);
+            return brain;
+        }
+        public Brain GetBrain(Unit unit) 
+        {
+            return AddBrain(new Brain(this)); 
+        }
+    }
 }
 
