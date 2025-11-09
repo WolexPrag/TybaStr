@@ -6,7 +6,7 @@ using UnityEngine;
     [Serializable]
     public class Brain
     {
-        [SerializeField] private FractionTask _task;
+        [SerializeField] private FractionTask _currentTask;
         [SerializeReference] protected Fraction _fraction;
         [SerializeReference] protected Unit _unit;
         public Brain(Fraction fraction)
@@ -19,11 +19,11 @@ using UnityEngine;
         }
         public void Tick(float deltaTime)
         {
-            DoTask(_task, deltaTime);
+            DoTask(_currentTask, deltaTime);
         }
         public void AssignTask(FractionTask task)
         {
-            _task = task;
+            _currentTask = task;
         }
         private void DoTask(FractionTask task, float deltaTime)
         {
