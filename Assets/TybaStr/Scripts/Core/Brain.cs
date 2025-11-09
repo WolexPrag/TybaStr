@@ -27,6 +27,10 @@ using UnityEngine;
         }
         private void DoTask(FractionTask task, float deltaTime)
         {
+            if (task.Target != null)
+            {
+                _unit.Move(task.Target.Position,deltaTime);
+            }
         }
     }
 }
