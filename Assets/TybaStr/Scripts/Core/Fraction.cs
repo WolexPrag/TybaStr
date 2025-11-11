@@ -8,7 +8,7 @@ namespace TybaStr.Core
     public class Fraction
     {
         [SerializeField] private string _name;
-        public string Name => _name;
+        public string Name { get { return _name; } set { _name = value; } }
         [SerializeField] private List<Brain> _brains;
         public IReadOnlyList<Brain> Brains => _brains;
         public Fraction(string name)
@@ -29,9 +29,9 @@ namespace TybaStr.Core
             _brains.Add(brain);
             return brain;
         }
-        public Brain GetBrain(Unit unit) 
+        public Brain GetBrain(Unit unit)
         {
-            return AddBrain(new Brain(this)); 
+            return AddBrain(new Brain(this));
         }
     }
 }
