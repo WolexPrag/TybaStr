@@ -1,4 +1,3 @@
-using R3;
 using System;
 using TybaStr.SaveLoad;
 using UnityEngine;
@@ -10,8 +9,8 @@ namespace TybaStr.MVVM.MainScene
     public class ViewModelMainScene
     {
         [SerializeField] private ModelMainScene _model;
-        public Observable<string> OnChangeUserName => _model.Profile.OnChangeName;
-        public string Name { get { return _model.Profile.Name; } set { _model.Profile.Name = value; _saveLoadService.Save(_key, _model.Profile.Name); } }
+        public string Name { get { return _model.Profile.Name; } set { _model.Profile.Name = value; } }
+        public event Action OnChangeProfile;
 
         private IView _viewSettings;
         private IView _viewMain;
@@ -39,6 +38,8 @@ namespace TybaStr.MVVM.MainScene
                     _model.Profile.Name = v;
                 });
             });
+            _model.Profile.OnChange += () => { OnChangeProfile?.Invoke(); };
+            OnChangeProfile += () => { _saveLoadService.Save(_key, Name); };
             _viewMain = viewMain;
             _viewSettings = viewSettings;
         }

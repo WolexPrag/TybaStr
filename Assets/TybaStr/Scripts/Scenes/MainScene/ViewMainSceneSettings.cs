@@ -1,5 +1,4 @@
-﻿using R3;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 namespace TybaStr.MVVM.MainScene
@@ -13,7 +12,7 @@ namespace TybaStr.MVVM.MainScene
         public void Init(ViewModelMainScene viewModel)
         {
             _viewModel = viewModel;
-            _viewModel.OnChangeUserName.Subscribe(SetTextInputField);
+            _viewModel.OnChangeProfile += () => { SetTextInputField(_viewModel.Name); };
             _inputField.onEndEdit.AddListener(v => _viewModel.Name = v);
             _toMainButton.onClick.AddListener(_viewModel.OnMain);
         }
