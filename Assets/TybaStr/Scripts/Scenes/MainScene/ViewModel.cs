@@ -3,12 +3,12 @@ using TybaStr.SaveLoad;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace TybaStr.MVVM.MainScene
+namespace TybaStr.Scenes.MainScene
 {
     [Serializable]
-    public class ViewModelMainScene
+    public class ViewModel
     {
-        [SerializeField] private ModelMainScene _model;
+        [SerializeField] private Model _model;
         public string Name { get { return _model.Profile.Name; } set { _model.Profile.Name = value; } }
         public event Action OnChangeProfile;
 
@@ -19,11 +19,11 @@ namespace TybaStr.MVVM.MainScene
         private string _key => "Profile";
 
 
-        public ViewModelMainScene(ISaveLoadService saveLoadService)
+        public ViewModel(ISaveLoadService saveLoadService)
         {
             _saveLoadService = saveLoadService;
         }
-        public void Init(ModelMainScene model, IView viewMain, IView viewSettings)
+        public void Init(Model model, IView viewMain, IView viewSettings)
         {
             _model = model;
             _saveLoadService.TryLoad(_key, _ =>

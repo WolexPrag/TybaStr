@@ -1,15 +1,16 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-namespace TybaStr.MVVM.MainScene
+
+namespace TybaStr.Scenes.MainScene
 {
-    public class ViewMainSceneSettings : MonoBehaviour, IView
+    public class ViewSettings : MonoBehaviour, IView
     {
-        [SerializeField] private ViewModelMainScene _viewModel;
+        [SerializeField] private ViewModel _viewModel;
         [SerializeField] private TMP_InputField _inputField;
         [SerializeField] private Button _toMainButton;
 
-        public void Init(ViewModelMainScene viewModel)
+        public void Init(ViewModel viewModel)
         {
             _viewModel = viewModel;
             _viewModel.OnChangeProfile += () => { SetTextInputField(_viewModel.Name); };

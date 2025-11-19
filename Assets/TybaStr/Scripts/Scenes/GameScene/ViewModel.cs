@@ -1,19 +1,19 @@
 using TybaStr.SaveLoad;
 
-namespace TybaStr.MVVM.GameScene
+namespace TybaStr.Scenes.GameScene
 {
-    public class ViewModelGameScene
+    public class ViewModel
     {
-        private ModelGameScene _model;
+        private Model _model;
 
         private ISaveLoadService _saveLoadService;
         private string _key = "Profile";
 
-        public ViewModelGameScene(ISaveLoadService saveLoadService)
+        public ViewModel(ISaveLoadService saveLoadService)
         {
             _saveLoadService = saveLoadService;
         }
-        public void Init(ModelGameScene model)
+        public void Init(Model model)
         {
             _model = model;
             _saveLoadService.TryLoad(_key, _ =>
