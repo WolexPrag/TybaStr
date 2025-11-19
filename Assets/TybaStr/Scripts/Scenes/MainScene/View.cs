@@ -1,16 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TybaStr.MVVM.MainScene
+namespace TybaStr.Scenes.MainScene
 {
-    public class ViewMainScene : MonoBehaviour, IView
+    public class View : MonoBehaviour, IView
     {
-        [SerializeField] private ViewModelMainScene _viewModel;
+        [SerializeField] private ViewModel _viewModel;
 
         [SerializeField] private Button _settingButton;
         [SerializeField] private Button _playButton;
 
-        public void Init(ViewModelMainScene viewModel)
+        public void Init(ViewModel viewModel)
         {
             _viewModel = viewModel;
             _settingButton.onClick.AddListener(_viewModel.OnSettings);

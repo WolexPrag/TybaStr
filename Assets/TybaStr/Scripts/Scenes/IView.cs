@@ -1,6 +1,6 @@
-﻿namespace TybaStr.MVVM
+﻿namespace TybaStr.Scenes
 {
-    public interface IView
+    public interface IView 
     {
         void Show();
         void Hide();

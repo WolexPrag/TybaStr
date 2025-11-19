@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
 
-namespace TybaStr.MVVM.MainScene
+namespace TybaStr.Scenes.MainScene
 {
     [Serializable]
-    public class ModelMainScene
+    public class Model
     {
         [SerializeField] private UserProfile _profile = new();
         public UserProfile Profile { get { return _profile; } set { _profile = value; } }
