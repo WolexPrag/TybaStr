@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-namespace TybaStr.Core.Recources
+namespace TybaStr.Core.Resources
 {
     [CreateAssetMenu(menuName = "Resource/Wrapper/SOWrapper")]
     public class SOWrapper : Wrapper

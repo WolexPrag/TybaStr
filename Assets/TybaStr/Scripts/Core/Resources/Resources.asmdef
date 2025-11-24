@@ -1,6 +1,6 @@
 {
-    "name": "Recources",
-    "rootNamespace": "TybaStr.Core.Recources",
+    "name": "Resources",
+    "rootNamespace": "TybaStr.Core.Resources",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

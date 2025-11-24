@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-namespace TybaStr.Core.Recources
+namespace TybaStr.Core.Resources
 {
     [System.Serializable]
     public abstract class Wrapper : ScriptableObject

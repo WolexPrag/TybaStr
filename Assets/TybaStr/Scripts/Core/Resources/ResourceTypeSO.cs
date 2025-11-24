@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TybaStr.Core.Recources
+namespace TybaStr.Core.Resources
 {
 	[CreateAssetMenu(menuName = "Resource/New")]
 	public class ResourceTypeSO : ScriptableObject , IResourceType

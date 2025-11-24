@@ -1,5 +1,5 @@
 ﻿
-namespace TybaStr.Core.Recources
+namespace TybaStr.Core.Resources
 {
     public interface IResourceType
     {
