@@ -1,8 +1,6 @@
-﻿
-using System;
-using TybaStr.Core.Resources;
+﻿using System;
 
-namespace TybaStr.Core.Recources
+namespace TybaStr.Core.Resources
 {
     public struct Resource
     {
