@@ -803,7 +803,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2008926102}
   - component: {fileID: 2008926101}
-  - component: {fileID: 2008926103}
   m_Layer: 0
   m_Name: Spawn
   m_TagString: Untagged
@@ -884,26 +883,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2008926103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2008926100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc14724471cf964cb296225683e818f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Core::UnitFactory
-  _produceOptions:
-  - _price: 100
-    _timeConstruct: 5
-    _unit: {fileID: 3406957220862046641, guid: 6356d508e1cfa7245a32ec7801aeadf5, type: 3}
-  _produceInfo: []
-  posExit: {fileID: 2008926102}
-  TEST_DATA_BIND1:
-    IdOptions: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
